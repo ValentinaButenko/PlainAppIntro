@@ -7,60 +7,79 @@
 //
 
 import UIKit
+import SnapKit
 
-class PageVC: UIPageViewController, UIPageViewControllerDataSource{
+class PageVC: UIViewController{
 
-    var arrPageTitle: NSArray!
-    var arrImgNames: NSArray!
+    var pageViewController: UIPageViewController!
+    var startButton: UIButton!
+
+    var buttonFirstClicked = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor.whiteColor()
 
-        arrImgNames = ["travel.png", "camera.png", "check.png"]
-        arrPageTitle = ["Travel to new places", "Take awesome photos", "Publish photos on map!"]
-        self.dataSource = self
+        let bgPic = UIImageView(image: UIImage(named: "bg.png"))
+        bgPic.makeBlurEffect(bgPic)
+        self.view.addSubview(bgPic)
+        bgPic.snp_makeConstraints { (make) in
+            make.edges.equalTo(view)
+        }
 
-        self.setViewControllers([getViewControllerAtIndex(0)] as [UIViewController], direction: .Forward, animated: true, completion: nil)
+        self.setupPageVC()
+        self.setupStartButton()
+
+        self.pageViewController.didMoveToParentViewController(self)
+
     }
 
-    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-        let pageContent: PageContent = viewController as! PageContent
-        var index = pageContent.pageIndex
-        if ((index == 0) || (index == NSNotFound))
-        {
-            return nil
-        }
-        index -= 1
-        return getViewControllerAtIndex(index)
-        }
+    func setupPageVC(){
+        let pc = UIPageControl.appearance()
+        pc.pageIndicatorTintColor = UIColor(red: 190/255, green: 144/255, blue: 212/255, alpha: 1.0)
+        pc.currentPageIndicatorTintColor = UIColor(red: 155/255, green: 89/255, blue: 182/255, alpha: 1.0)
+        pc.backgroundColor = UIColor.clearColor()
 
-    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-        let pageContent: PageContent = viewController as! PageContent
-        var index = pageContent.pageIndex
-        if (index == NSNotFound)
-        {
-            return nil
+        self.pageViewController = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
+        
+        self.pageViewController.dataSource = self
+        self.addChildViewController(self.pageViewController)
+
+        self.view.addSubview(self.pageViewController.view)
+        self.pageViewController.view.snp_makeConstraints { (make) in
+            make.edges.equalTo(self.view)
         }
-        index += 1
-        if (index == arrPageTitle.count)
-        {
-            return nil
-        }
-        return getViewControllerAtIndex(index)
     }
 
-    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
-        return self.arrImgNames.count
+    func setupStartButton(){
+        let startBtn = UIButton()
+        startBtn.setImage(UIImage(named: "start.png")?.imageWithRenderingMode(.AlwaysOriginal), forState: UIControlState.Normal)
+        startBtn.addTarget(self, action: #selector(PageVC.restartAction(_:)), forControlEvents: .TouchUpInside)
+
+        self.view.addSubview(startBtn)
+        startBtn.snp_makeConstraints { (make) in
+            make.centerX.centerY.equalTo(self.view)
+        }
+        self.startButton = startBtn
     }
 
-    func getViewControllerAtIndex(index: NSInteger) -> PageContent{
+    func viewControllerAtIndex(index: Int) -> PageContent{
+        if (PAGE.count == 0) || (index >= PAGE.count){
+            return PageContent()
+        }
         let vc = PageContent()
-        vc.lblText = "\(arrPageTitle[index])"
-        vc.pictureName = "\(arrImgNames[index])"
         vc.pageIndex = index
-
-        self.presentViewController(vc, animated: true, completion: nil)
-
         return vc
     }
- }
+
+    func restartAction(sender: UIButton!){
+        if buttonFirstClicked == true{
+
+            self.pageViewController.setViewControllers([self.viewControllerAtIndex(0)], direction: .Forward, animated: true, completion: nil)
+        }
+    }
+
+    func buttonGrowInSize(){
+        
+    }
+}

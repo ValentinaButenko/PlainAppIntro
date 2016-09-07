@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		F003927D5D6DAAA19B279786 /* Pods_AppIntro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 926BAFB139FE45E8ABA45586 /* Pods_AppIntro.framework */; };
 		F61433E81D80159E002064BB /* BlurEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61433E71D80159E002064BB /* BlurEffect.swift */; };
+		F61433EA1D802E6B002064BB /* Pages.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61433E91D802E6B002064BB /* Pages.swift */; };
+		F61433EC1D8034D9002064BB /* PageViewCDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61433EB1D8034D9002064BB /* PageViewCDataSource.swift */; };
 		F68407EB1D7FFE0C00B9D37D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68407EA1D7FFE0C00B9D37D /* AppDelegate.swift */; };
 		F68407F21D7FFE0C00B9D37D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F68407F11D7FFE0C00B9D37D /* Assets.xcassets */; };
 		F68407F51D7FFE0C00B9D37D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F68407F31D7FFE0C00B9D37D /* LaunchScreen.storyboard */; };
@@ -21,6 +23,8 @@
 		926BAFB139FE45E8ABA45586 /* Pods_AppIntro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppIntro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABCC161A5F937A4F807C74B3 /* Pods-AppIntro.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppIntro.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppIntro/Pods-AppIntro.release.xcconfig"; sourceTree = "<group>"; };
 		F61433E71D80159E002064BB /* BlurEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurEffect.swift; sourceTree = "<group>"; };
+		F61433E91D802E6B002064BB /* Pages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pages.swift; sourceTree = "<group>"; };
+		F61433EB1D8034D9002064BB /* PageViewCDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewCDataSource.swift; sourceTree = "<group>"; };
 		F68407E71D7FFE0C00B9D37D /* AppIntro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppIntro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F68407EA1D7FFE0C00B9D37D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F68407F11D7FFE0C00B9D37D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -84,9 +88,11 @@
 				F68407F11D7FFE0C00B9D37D /* Assets.xcassets */,
 				F68407F31D7FFE0C00B9D37D /* LaunchScreen.storyboard */,
 				F68407F61D7FFE0C00B9D37D /* Info.plist */,
+				F61433E91D802E6B002064BB /* Pages.swift */,
 				F68408021D8008A500B9D37D /* PageVC.swift */,
 				F68408041D80093400B9D37D /* PageContent.swift */,
 				F61433E71D80159E002064BB /* BlurEffect.swift */,
+				F61433EB1D8034D9002064BB /* PageViewCDataSource.swift */,
 			);
 			path = AppIntro;
 			sourceTree = "<group>";
@@ -212,8 +218,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F61433EC1D8034D9002064BB /* PageViewCDataSource.swift in Sources */,
 				F68407EB1D7FFE0C00B9D37D /* AppDelegate.swift in Sources */,
 				F61433E81D80159E002064BB /* BlurEffect.swift in Sources */,
+				F61433EA1D802E6B002064BB /* Pages.swift in Sources */,
 				F68408051D80093400B9D37D /* PageContent.swift in Sources */,
 				F68408031D8008A500B9D37D /* PageVC.swift in Sources */,
 			);

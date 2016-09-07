@@ -11,9 +11,7 @@ import SnapKit
 
 class PageContent: UIViewController {
 
-    var pageIndex = 0
-    var pictureName: String!
-    var lblText: String!
+    var pageIndex: Int!
 
     var bgPic: UIImageView!
     var logoView: UIImageView!
@@ -22,25 +20,13 @@ class PageContent: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.whiteColor()
         self.setup()
     }
 
     func setup(){
-        self.setupBgPicure()
         self.setupLogoView()
         self.setupPictureView()
         self.setupLabel()
-    }
-
-    func setupBgPicure(){
-        let bgPic = UIImageView(image: UIImage(named: "bg.png"))
-        bgPic.makeBlurEffect(bgPic)
-        self.view.addSubview(bgPic)
-        bgPic.snp_makeConstraints { (make) in
-            make.edges.equalTo(view)
-        }
-        self.bgPic = bgPic
     }
 
     func setupLogoView(){
@@ -57,7 +43,7 @@ class PageContent: UIViewController {
 
     func setupPictureView(){
         let pictureView = UIImageView(frame: CGRect(x: self.view.frame.width/2 - 90, y: self.view.frame.height/2 - 75, width: 175, height: 150))
-        pictureView.image = UIImage(named: pictureName)
+        pictureView.image = UIImage(named: PAGE[self.pageIndex].image)
         self.view.addSubview(pictureView)
         pictureView.contentMode = .ScaleAspectFit
 
@@ -66,7 +52,7 @@ class PageContent: UIViewController {
 
     func setupLabel(){
         let label = UILabel()
-        label.text = lblText
+        label.text = PAGE[self.pageIndex].title
         label.textAlignment = .Center
         label.textColor = UIColor.whiteColor()
         label.font = UIFont(name: "HelveticaNeue-Light", size: 25)
