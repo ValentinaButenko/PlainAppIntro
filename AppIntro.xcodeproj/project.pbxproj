@@ -63,6 +63,40 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F62CB2251D82ADA900FB6A3D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F61433E91D802E6B002064BB /* Pages.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		F62CB2261D82ADB200FB6A3D /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F68408021D8008A500B9D37D /* PageVC.swift */,
+				F68408041D80093400B9D37D /* PageContent.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F62CB2271D82ADCD00FB6A3D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F61433E71D80159E002064BB /* BlurEffect.swift */,
+				F61433EB1D8034D9002064BB /* PageViewCDataSource.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		F62CB2281D82ADE100FB6A3D /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				F68407F11D7FFE0C00B9D37D /* Assets.xcassets */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
 		F68407DE1D7FFE0C00B9D37D = {
 			isa = PBXGroup;
 			children = (
@@ -84,15 +118,13 @@
 		F68407E91D7FFE0C00B9D37D /* AppIntro */ = {
 			isa = PBXGroup;
 			children = (
+				F62CB2281D82ADE100FB6A3D /* Data */,
+				F62CB2271D82ADCD00FB6A3D /* Extensions */,
+				F62CB2261D82ADB200FB6A3D /* ViewControllers */,
+				F62CB2251D82ADA900FB6A3D /* Model */,
 				F68407EA1D7FFE0C00B9D37D /* AppDelegate.swift */,
-				F68407F11D7FFE0C00B9D37D /* Assets.xcassets */,
 				F68407F31D7FFE0C00B9D37D /* LaunchScreen.storyboard */,
 				F68407F61D7FFE0C00B9D37D /* Info.plist */,
-				F61433E91D802E6B002064BB /* Pages.swift */,
-				F68408021D8008A500B9D37D /* PageVC.swift */,
-				F68408041D80093400B9D37D /* PageContent.swift */,
-				F61433E71D80159E002064BB /* BlurEffect.swift */,
-				F61433EB1D8034D9002064BB /* PageViewCDataSource.swift */,
 			);
 			path = AppIntro;
 			sourceTree = "<group>";

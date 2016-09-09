@@ -13,6 +13,7 @@ class PageVC: UIViewController{
 
     var pageViewController: UIPageViewController!
     var startButton: UIButton!
+    var newStartButton: UIButton!
 
     var buttonFirstClicked = true
 
@@ -53,7 +54,9 @@ class PageVC: UIViewController{
 
     func setupStartButton(){
         let startBtn = UIButton()
-        startBtn.setImage(UIImage(named: "start.png")?.imageWithRenderingMode(.AlwaysOriginal), forState: UIControlState.Normal)
+        startBtn.setImage(UIImage(named: "start.png")?.imageWithRenderingMode(.AlwaysOriginal), forState: .Normal)
+
+        startBtn.alpha = 1.0
         startBtn.addTarget(self, action: #selector(PageVC.restartAction(_:)), forControlEvents: .TouchUpInside)
 
         self.view.addSubview(startBtn)
@@ -61,6 +64,18 @@ class PageVC: UIViewController{
             make.centerX.centerY.equalTo(self.view)
         }
         self.startButton = startBtn
+
+        let newStartBtn = UIButton()
+        newStartBtn.setImage(UIImage(named: "reload.png")?.imageWithRenderingMode(.AlwaysOriginal), forState: .Normal)
+        newStartBtn.alpha = 0.0
+        newStartBtn.addTarget(self, action: #selector(PageVC.restartAction(_:)), forControlEvents: .TouchUpInside)
+
+        self.view.addSubview(newStartBtn)
+        newStartBtn.snp_makeConstraints { (make) in
+            make.trailing.equalTo(view).inset(20)
+            make.top.equalTo(view).inset(50)
+        }
+        self.newStartButton = newStartBtn
     }
 
     func viewControllerAtIndex(index: Int) -> PageContent{
@@ -74,12 +89,29 @@ class PageVC: UIViewController{
 
     func restartAction(sender: UIButton!){
         if buttonFirstClicked == true{
-
-            self.pageViewController.setViewControllers([self.viewControllerAtIndex(0)], direction: .Forward, animated: true, completion: nil)
+            self.buttonDisapear()
+            self.buttonFirstClicked = false
+        }
+        else{
+            self.restart()
         }
     }
 
-    func buttonGrowInSize(){
-        
+    func buttonDisapear(){
+
+        let animation = {
+            self.startButton.alpha = 0.0
+            self.newStartButton.alpha = 1.0
+        }
+        UIView.animateWithDuration(0.3,
+                                   delay: 0.0,
+                                   options: .CurveEaseIn,
+                                   animations: animation,
+                                   completion: {_ in self.restart()})
     }
-}
+
+    func restart(){
+        self.pageViewController.setViewControllers([self.viewControllerAtIndex(0)], direction: .Reverse, animated: true, completion: nil)
+    }
+
+ }
