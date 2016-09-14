@@ -14,7 +14,6 @@ class PageContent: UIViewController {
     var pageIndex: Int!
 
     var bgPic: UIImageView!
-    var logoView: UIImageView!
     var pictureView: UIImageView!
     var label: UILabel!
 
@@ -24,29 +23,20 @@ class PageContent: UIViewController {
     }
 
     func setup(){
-        self.setupLogoView()
         self.setupPictureView()
         self.setupLabel()
     }
 
-    func setupLogoView(){
-        let logoView = UIImageView(image: UIImage(named: "logo.png"))
-        logoView.alpha = 0.3
-        self.view.addSubview(logoView)
-        logoView.snp_makeConstraints { (make) in
-            make.top.equalTo(view).inset(40)
-            make.centerX.equalTo(view)
-            make.height.width.equalTo(100)
-        }
-        self.logoView = logoView
-    }
-
     func setupPictureView(){
-        let pictureView = UIImageView(frame: CGRect(x: self.view.frame.width/2 - 90, y: self.view.frame.height/2 - 75, width: 175, height: 150))
-        pictureView.image = UIImage(named: PAGE[self.pageIndex].image)
+    //    let pictureView = UIImageView(frame: CGRect(x: self.view.frame.width/2 - 90, y: self.view.frame.height/2 - 75, width: 175, height: 150))
+        let pictureView = UIImageView()
+        pictureView.image = UIImage(named: PAGE[self.pageIndex].image)?.imageWithRenderingMode(.AlwaysOriginal)
         self.view.addSubview(pictureView)
         pictureView.contentMode = .ScaleAspectFit
 
+        pictureView.snp_makeConstraints { (make) in
+            make.centerY.centerX.equalTo(view)
+        }
         self.pictureView = pictureView
     }
 
